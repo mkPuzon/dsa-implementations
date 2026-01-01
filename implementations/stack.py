@@ -23,9 +23,13 @@ class Stack:
     def pop(self) -> object:
         if self.num_items == 0:
             return None
+        self.num_items -= 1
         return self._stack.pop()
-
-    def get_num_items(self):
+    
+    def is_empty(self) -> bool:
+        return self.num_items == 0
+    
+    def size(self) -> int:
         return self.num_items
     
     def __str__(self):
