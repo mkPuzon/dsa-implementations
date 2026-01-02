@@ -9,26 +9,28 @@ class Queue:
 
     def __init__(self):
         self._queue = []
-        self.size = 0
+        self.num_items = 0
     
     def peek(self) -> object:
-        if self.size == 0:
+        if self.num_items == 0:
             return None
         return self._queue[0]
     
     def enqueue(self, item: object) -> None:
         self._queue.append(item)
-        self.size += 1
+        self.num_items += 1
     
     def dequeue(self) -> object:
-        self.size -= 1
-        return self._queue.pop(index=0)
+        if self.num_items == 0:
+            return None
+        self.num_items -= 1
+        return self._queue.pop(0)
     
     def size(self) -> int:
-        return self.size
+        return self.num_items
     
     def is_empty(self) -> bool:
-        return self.size == 0
+        return self.num_items == 0
 
     def __str__(self) -> str:
-        return f"Queue with {self.size} elements. From first in to last in:\n{self._queue}"
+        return f"Queue with {self.num_items} elements. From first in to last in:\n{self._queue}"
