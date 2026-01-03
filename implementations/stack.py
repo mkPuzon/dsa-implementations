@@ -9,32 +9,33 @@ class Stack:
 
     def __init__(self) -> None:
         self._stack = []
-        self.num_items = 0
+        self._num_items = 0
         
     def add(self, val: object) -> None:
         self._stack.append(val)
-        self.num_items += 1
+        self._num_items += 1
     
     def peek(self) -> object:
-        if self.num_items == 0:
+        if self._num_items == 0:
             return None
         return self._stack[-1]
     
     def pop(self) -> object:
-        if self.num_items == 0:
+        if self._num_items == 0:
             return None
-        self.num_items -= 1
+        self._num_items -= 1
         return self._stack.pop()
     
     def is_empty(self) -> bool:
-        return self.num_items == 0
+        return self._num_items == 0
     
     def size(self) -> int:
-        return self.num_items
+        return self._num_items
     
-    def __str__(self):
-        return f"Stack contains {self.num_items} items. From bottom to top:\n{self._stack}"
-
+    def __repr__(self) -> str:
+        top = self.peek()
+        top_str = f", top={top}" if top else ""
+        return f"Stack(size={self._num_items}{top_str})"
 
 if __name__ == "__main__":
     s = Stack()
